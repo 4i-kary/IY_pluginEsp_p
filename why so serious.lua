@@ -1,7 +1,6 @@
 --# loop
 if getgenv().repeatable == true and getgenv().check == false then
 getgenv().check = true
-while wait() and getgenv().repeatable == true do
 for I,v in pairs(Player:GetPlayers()) do
 --# get user
 if v ~= Lplayer then
@@ -68,7 +67,6 @@ end
 human.HealthChanged:Connect(v3)
 v3()
 
-end
 end
 end
 end
