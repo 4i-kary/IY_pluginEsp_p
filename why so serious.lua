@@ -1,6 +1,12 @@
+--# get services and some locals
+local Player = game:GetService("Players")
+local Run = game:GetService("RunService") --# too lazy to delete this caller 
+local Lplayer = Player.LocalPlayer
+
 --# loop
 if getgenv().repeatable == true and getgenv().check == false then
 getgenv().check = true
+while wait() and getgenv().repeatable == true do
 for I,v in pairs(Player:GetPlayers()) do
 --# get user
 if v ~= Lplayer then
@@ -42,10 +48,10 @@ local Status = "⚪"
 local Health = human.Health
 local MHealth = human.MaxHealth
 local per = 0
-if MHealth > 1 then
+if MHealth > 0 then
 per = math.floor((Health/MHealth) * 100)
 else
-Status = "⚪"
+Status = "💔"
 end
 
 if per > 70 then
@@ -63,10 +69,11 @@ v2.Text = "(" .. Status .. ")" .. "N: " ..  v.Name .. " | " .. "H: " .. math.flo
 --# this thing funny because it took me about 2.30 hr
 end
 end
-
+--# repeating, changing status/color of esp when [per statement]
 human.HealthChanged:Connect(v3)
 v3()
 
+end
 end
 end
 end
